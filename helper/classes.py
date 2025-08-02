@@ -6,9 +6,9 @@ from typing import List
 from dotenv import load_dotenv
 from helper.ai.splitter import Splitter
 from helper.ai.vector_dbs import ChromaVectorDB
+from helper.ai.embeddings import HuggingFaceEmbeddings
 from chats_app.models import VectorStoreWikipediaFlag
 from langchain_community.tools import WikipediaQueryRun
-from langchain_cohere.embeddings import CohereEmbeddings
 from langchain_core.messages import BaseMessage, SystemMessage
 
 load_dotenv()
@@ -17,7 +17,7 @@ class WikipediaQueryRunWithVectorDBStore(WikipediaQueryRun):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        object.__setattr__(self, 'store', ChromaVectorDB(embeddings=CohereEmbeddings(model="embed-english-v3.0")).store)
+        object.__setattr__(self, 'store', ChromaVectorDB(embeddings=HuggingFaceEmbeddings()).store)
         
 
     def get_page_title_from_the_response(self, response: str):

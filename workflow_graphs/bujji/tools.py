@@ -3,12 +3,12 @@ from langchain_core.tools import tool
 from langchain_community.utilities import WikipediaAPIWrapper
 from helper.classes import WikipediaQueryRunWithVectorDBStore
 from helper.ai.vector_dbs import ChromaVectorDB
-from langchain_cohere.embeddings import CohereEmbeddings
+from helper.ai.embeddings import HuggingFaceEmbeddings
 
 # Initialize API wrapper and tools
 api_wrapper = WikipediaAPIWrapper(top_k_results=1, doc_content_chars_max=8142)
 wiki = WikipediaQueryRunWithVectorDBStore(api_wrapper=api_wrapper)
-vector_db = ChromaVectorDB(embeddings=CohereEmbeddings(model="embed-english-v3.0"))
+vector_db = ChromaVectorDB(embeddings=HuggingFaceEmbeddings())
 
 @tool
 def wikipedia_search_tool(

@@ -4,7 +4,6 @@ from django.conf import settings
 from django.contrib.sessions.backends.db import SessionStore
 from .exceptions import SmoothException
 from datetime import datetime, timedelta
-from django.conf import settings
 
 # Jwt token
 def encode_token(payload):

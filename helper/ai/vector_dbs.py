@@ -1,10 +1,8 @@
-import time
 from uuid import uuid4
 from abc import ABC, abstractmethod
 from langchain_chroma import Chroma
 from langchain_core.documents import Document
 from langchain_core.embeddings import Embeddings
-from helper.exceptions import SmoothException
 
 class BaseVectorDB(ABC):
     @abstractmethod
